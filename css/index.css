@@ -1,0 +1,164 @@
+/*
+ * Ext JS Library 2.2
+ * Copyright(c) 2006-2008, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+
+/*===================================
+/*   Basic page styles
+/*===================================*/
+body {
+    font-family:'lucida grande',tahoma,arial,sans-serif;
+    font-size:11px;
+	 /*outline: none; */
+}
+a {
+    color:#15428B;
+}
+a:link, a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+#header {
+    background: #7F99BE url(../images/layout-browser-hd-bg.gif) repeat-x center;
+}
+#header h1 {
+    font-size: 16px;
+    color: #fff;
+    font-weight: normal;
+    padding: 5px 10px;
+}
+#start-div h2 {
+    font-size: 12px;
+    color: #555;
+    padding-bottom:5px;
+    border-bottom:1px solid #C3D0DF;
+}
+#start-div p {
+    margin: 10px 0;
+}
+
+/*===================================
+/*   Customized layout styles
+/*===================================*/
+
+/* Remove the border around the tabs and override the default white background: */
+.x-tab-panel-header-plain .x-tab-strip-top {
+    background: #DFE8F6 url(../extjs/resources/images/default/tabs/tab-strip-bg.gif) repeat-x scroll center bottom !important;
+}
+
+.x-form-item  {
+	font-size: 11px; 
+}
+.x-form-field{
+	font-size: 11px; 
+}
+
+.x-tree-node div.feeds-node{
+
+    background:#eee url(../images/cmp-bg.gif) repeat-x;
+
+    margin-top:1px;
+
+    border-top:1px solid #ddd;
+
+    border-bottom:1px solid #ccc;
+
+    padding-top:2px;
+
+    padding-bottom:1px;
+
+}
+
+.feeds-node .x-tree-node-icon {
+
+    display:none;
+
+}
+
+#loading
+{
+	position: absolute;
+	background: white;
+	left: 50%;
+	top: 40%;
+	padding: 5px;
+	z-index: 20001;
+	height: auto;
+	background:transparent;
+}
+
+#loading .loading-indicator
+{
+	background:white;
+    padding:5px;
+    margin:0;
+    height:auto;
+}
+#loading-msg
+{
+	font: normal 9pt arial, tahoma, sans-serif;
+	vertical-align: middle;
+	font-weight: bold;
+	margin-top: 15px;
+}
+
+.x-window-dlg .ext-mb-download {
+	background:transparent url(../images/download.gif) no-repeat top left;
+	height:46px;
+}
+
+img.foto {
+    width: 96px;
+    height: 124px;
+    float: left;
+    margin: 0px 5px 0px 0px; 
+}
+span.nama {
+    font-size: 100%;
+    color: #3764A0;
+    font-weight: bold; 
+}
+#action-panel .x-panel {
+	margin-bottom:3px;
+	margin-right:0;
+}
+#action-panel .x-panel-body {
+	border:0 none;
+}
+#action-panel .x-panel-body li {
+	margin:3px;
+}
+#action-panel .x-panel-body li img {
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	margin-right:2px;
+	margin-bottom:2px;
+}
+#action-panel .x-panel-body li a {
+	text-decoration:none;
+	color:#3764A0;
+}
+#action-panel .x-plain-body {
+	background-color:#cad9ec;
+    padding:3px 0 0 5px;
+}
+.x-air #action-panel .x-plain-body {
+	padding-left:3px;
+}
+#action-panel .x-panel-body li a:hover {
+	text-decoration:underline;
+	color:#15428b;
+}
+
+ .x-check-group-alt {
+     background: #D1DDEF;
+     border-top:1px dotted #B5B8C8;
+     border-bottom:1px dotted #B5B8C8;
+ }
