@@ -7,7 +7,7 @@
 	$grid->setJoin() -->optional;
 	echo $grid->doRead($_REQUEST); 
 **/
-class grid extends msDB {
+class Grid extends msDB {
 
 	/**
 	 * Column Field Variable
@@ -52,7 +52,9 @@ class grid extends msDB {
 	public $groupBy ="";
 	public $dataInput; 
 	public $dataOutput;
-  public $manualOrder ="";
+	public $loadSingle =false;
+
+    public $manualOrder ="";
 	/**
 	 * Array Input For REST Operation
 	 *
@@ -67,8 +69,7 @@ class grid extends msDB {
 	 *
 	 * @param boolean $connection
 	 */
-	function __construct($connection) {
-		$this->message = "initialize class";
+	function __construct($connection=true) {
 		if ($connection ==true) {
 			$radiochecked = $this->connect();
 		}
@@ -315,6 +316,7 @@ class grid extends msDB {
 	}
 
 	function buildJson($rs) {
+	    $tmp = array(); 
 		if ($this->errMsg ==""){
 			$this->getTotal(); 
 			$arr = array(); 
@@ -329,6 +331,11 @@ class grid extends msDB {
 			$tmp['success'] = true; 
 			$tmp['total'] = $this->total; 
 			$tmp['data'] = $arr; 
+			if ($this->loadSingle){
+			  if ($arr)
+			    $tmp['data'] = $arr[0];
+			}
+			$tmp['metaData']= $this->buildMetaData(); 
 		} else {
 			$tmp['success']= false; 
 			$tmp['total'] = 0; 
@@ -637,6 +644,54 @@ class grid extends msDB {
 		
 		return json_encode($result); 
 		
+	}
+	
+	function buildMetaData(){
+	  $meta_data = new stdClass(); 
+	  $meta_data->successProperty = "success"; 
+	  $meta_data->totalProperty = "total"; 
+	  $meta_data->root = "data"; 
+	  $meta_data->fields = array(); 
+	  $meta_data->colModel= array();
+	  $meta_data->filterList=array(); 
+	  
+	  	  
+	  foreach($this->fields as $field){
+	    if (isset($field['meta'])){	    
+          if (isset($field['primary']))
+            $meta_data->idProperty = $field['name'];           	    
+            	      
+          $meta = $field['meta']; 
+	      /**pengaturan store **/
+	      $meta['st']['name'] = $field['name']; 
+	      $meta_data->fields[] = $meta['st']; 
+	      
+	      /**pengaturan colummodel **/
+	      $meta['cm']['dataIndex'] = $field['name']; 
+	      $meta_data->colModel[] = $meta['cm']; 
+	      
+	      /**pengaturan filter **/ 
+	      if (isset($meta['filter'])){
+	        $meta['filter']['dataIndex'] = $field['name']; 
+	        $meta_data->filterList[]= $meta['filter']; 
+	      }	      	          
+	    }	    
+	  }	  
+    
+	 if (!$meta_data->fields){
+	   return '';  
+	 } else
+	 return $meta_data; 
+	}
+    
+	function formatDate($date){
+	  if ($date){
+    	  $arr = explode('/',$date); 
+    	  $arr = array_reverse($arr,1);
+    	  return implode('-',$arr);
+	  }else{
+	     return ""; 
+	  }
 	}
 }
 ?>

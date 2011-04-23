@@ -23,6 +23,11 @@ $ux_js[] = "CheckColumn.js";
 $ux_js[] = "FileUploadField.js";
 $ux_js[] = "SearchField.js";
 $ux_js[] = "TabCloseMenu.js";
+$ux_js[] = "DynamicGrid/DynamicGridPanel.js";
+$ux_js[] = "DynamicGrid/WindowGridPopUp.js"; 
+$ux_js[] = "DynamicGrid/ExtPhpDynamicGridPanel.js"; 
+
+
 /**
 $ux_js[] = "RowEditor.js";
 $ux_js[] = "Portal.js";

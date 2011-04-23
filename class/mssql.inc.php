@@ -120,7 +120,7 @@ class msDB
   		$tmp[] = "?"; 
   	}
   	return implode(",",$tmp); 
-  }
+  }  
    // de-initialize class
   function __destruct()
   {

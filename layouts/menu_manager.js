@@ -374,11 +374,11 @@ function loadDetail(node) {
 // selection model
 treeMenu.getSelectionModel().on("selectionchange", function(s, node) {
 			if (node){
+                            dsEvent.baseParams.menu_id = node.id.split(".")[1]; 
                             dsEvent.load({
                                 params : {
                                         start : 0,
-                                        limit : 500,
-                                        menu_id : node.id.split(".")[1]
+                                        limit : 500
                                 }});
                         }
 				
@@ -417,6 +417,9 @@ var dsEvent = new Ext.data.Store({
 			reader : readerEvent,
 			writer : writerEvent,
 			autoSave : false,
+            baseParams:{
+              menu_id:0
+            },
 			sortInfo : {
 				field : 'event_name',
 				direction : 'ASC'
