@@ -64,13 +64,6 @@ class sppk extends msDB {
 
         }
 
-        function doRead2($REQUEST){
-            $grid = new grid(true);
-            $grid->setTable("pagu");
-            $grid->setJoin("INNER JOIN trans ON pagu.id = trans.idpagu");
-
-            
-        }
         function doRead($REQUEST,$report=0){
             $grid = new grid(true);
             $grid->setTable("sppk"); //set tablenya
@@ -86,12 +79,21 @@ class sppk extends msDB {
                     array(
                         "field"=>"jenis",  //field didalam table
                         "name"=>"jenis",   //mapping nama yang akan digunakan di json storenya
+                        "meta"=> array(
+                            "st" => array("type" => "string"),
+                            "cm"=>array("header" => "Jenis", "width" => 90),
+                            "filter"=>array("type" => "string") //optional jika ada filternya
+                          )
                         )
                     );
             $grid->addField(
                     array(
                         "field"=>"tanggal",  //field didalam table
                         "name"=>"tanggal",   //mapping nama yang akan digunakan di json storenya
+                        "meta"=> array(
+                           'st' => array('type' => 'date'),
+                           'cm' => array('header' => 'Tanggal', 'width' => 80)
+                        )
                         )
                     );
             $grid->addField(
