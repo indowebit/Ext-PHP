@@ -114,6 +114,10 @@ class msDB
     return $result;
   }
   
+  public function getLastID(){
+    return $this->db->Insert_ID();
+  }
+  
   public function getAskTag($len){
   	$tmp = Array(); 
   	for($i=1;$i<=$len;$i++) {

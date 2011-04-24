@@ -41,26 +41,40 @@ class Grid extends msDB {
 	 * @var string
 	 */
 	public $where="0=0"; 
+	
 	public $start=0;
+	
 	public $count=0; 
+	
 	public $total =0;
+	
 	public $sort=""; 
+	
 	public $dir="";
+	
 	public $errMsg=""; 
+	
 	public $json =""; 
+	
 	public $manualFilter ="";
+	
 	public $groupBy ="";
+	
 	public $dataInput; 
+	
 	public $dataOutput;
+	
 	public $loadSingle =false;
 
     public $manualOrder ="";
+    
 	/**
 	 * Array Input For REST Operation
 	 *
 	 * @var boolean
 	 */
 	private $isArrayInput = true; 
+	
 	private $sqlNolimit =0; 
 
 	
@@ -473,6 +487,7 @@ class Grid extends msDB {
 				$total++; 
 				$sqlSelect = $sql["sqlSelect"]; 
 				$this->setSQL($sqlSelect);
+				$this->setArray(Array($this->getLastID()));
 				$rs = $this->executeSQL();
 				$json[] = $this->buildSingleJson($rs); 
 			}
@@ -564,7 +579,7 @@ class Grid extends msDB {
 	function getLastRecordSql($data) {
 		$row = $this->buildList($this->fields);
 		$selectlist = implode(",",$row); 	
-		$strSql = "select " . $selectlist . " from " . $this->master_table ." " . $this->join ." order by ". $this->keyfield ." desc limit 0,1"; 
+		$strSql = "select " . $selectlist . " from " . $this->master_table ." where ".$this->keyfield ." =? " . $this->join;
 		return $strSql; 
 	}
 	
@@ -587,6 +602,7 @@ class Grid extends msDB {
 		return $result; 
 	}
 
+	
 	function buildFieldInsert() {
 		$result = array(); 
 		$jsonInput = json_decode(stripslashes($this->dataInput)); 
@@ -684,6 +700,7 @@ class Grid extends msDB {
 	 return $meta_data; 
 	}
     
+	
 	function formatDate($date){
 	  if ($date){
     	  $arr = explode('/',$date); 
