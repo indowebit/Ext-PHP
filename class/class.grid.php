@@ -684,7 +684,12 @@ class Grid extends msDB {
 	      
 	      /**pengaturan colummodel **/
 	      $meta['cm']['dataIndex'] = $field['name']; 
+	      
+	      /**pengaturan editor **/
+	      if (isset($meta['editor']))
+	        $meta['cm']['editor'] = $meta['editor'];	      
 	      $meta_data->colModel[] = $meta['cm']; 
+	      
 	      
 	      /**pengaturan filter **/ 
 	      if (isset($meta['filter'])){

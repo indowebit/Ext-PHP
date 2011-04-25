@@ -51,13 +51,18 @@ Ext.ux.grid.CheckColumn = function(config){
 
 Ext.ux.grid.CheckColumn.prototype ={
     init : function(grid){
-        this.grid = grid;
-        this.grid.on('render', function(){
-            var view = this.grid.getView();
-            view.mainBody.on('mousedown', this.onMouseDown, this);
-        }, this);
+	 this.grid = grid;
+	 if (this.grid.rendered) {
+	  var view = this.grid.getView();
+	  view.mainBody.on('mousedown', this.onMouseDown, this);
+	 } else {
+	  this.grid.on('render', function(){
+	   var view = this.grid.getView();
+	   view.mainBody.on('mousedown', this.onMouseDown, this);
+	  }, this);   
+	 }
     },
-
+    
     onMouseDown : function(e, t){
         if(t.className && t.className.indexOf('x-grid3-cc-'+this.id) != -1){
             e.stopEvent();

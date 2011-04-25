@@ -26,6 +26,10 @@ $ux_js[] = "TabCloseMenu.js";
 $ux_js[] = "DynamicGrid/DynamicGridPanel.js";
 $ux_js[] = "DynamicGrid/WindowGridPopUp.js"; 
 $ux_js[] = "DynamicGrid/ExtPhpDynamicGridPanel.js"; 
+$ux_js[] = "DynamicGrid/DynamicEditorGrid.js"; 
+$ux_js[] = "DynamicGrid/DynamicEditorGridTbar.js"; 
+
+
 
 
 /**
