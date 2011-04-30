@@ -24,7 +24,7 @@ Ext.ux.DynamicEditorGridTbar = Ext.extend(Ext.ux.DynamicEditorGrid, {
         }
       },'-',{
         text:'Auto Save',
-        iconCls:'icon-save',
+        iconCls:'autosave',
         disabled:this.tbarDisable.autosave,
         enableToggle:true,
         pressed:false,
