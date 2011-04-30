@@ -1,16 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2010 at 07:53 PM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Generation Time: Apr 30, 2011 at 02:56 PM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Database: `db_xframejs`
+-- Database: `ext_php`
 --
 
 -- --------------------------------------------------------
@@ -115,19 +121,18 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `published` tinyint(1) NOT NULL DEFAULT '1',
   `sort_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`id`, `parent_id`, `title`, `iconcls`, `handler`, `ajax`, `report`, `published`, `sort_id`) VALUES
-(8, 0, 'Sample Form', 'form', '', '', '', 1, 4),
-(9, 8, 'Sample Form 1', 'form-edit', 'form_v.js', 'form_c.php', '', 1, 9),
-(5, 4, 'Sample Grid 1', 'app-grid', 'sppk_v.js', 'sppk_c.php', 'sppk_r.php', 1, 5),
 (4, 0, 'Sample Grid', 'app-grid', '', '', '', 1, 6),
 (6, 0, 'Sample Chart', 'stat', '', '', '', 1, 8),
-(7, 6, 'Sample Chart 1', 'stat-line2', 'chart_v.js', 'chart_c.php', '', 1, 7);
+(7, 6, 'Sample Chart 1', 'stat-line2', 'chart_v.js', 'chart_c.php', '', 1, 7),
+(10, 4, 'People', 'browse', 'people_v.js', 'people_c.php', '', 1, 10),
+(11, 4, 'Dynamic Editor Grid', 'browse', 'customer_v.js', 'customer_c.php', '', 1, 11);
 
 -- --------------------------------------------------------
 
@@ -140,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `menu_event` (
   `menu_id` int(11) NOT NULL,
   `event_name` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `menu_event`
@@ -154,7 +159,13 @@ INSERT INTO `menu_event` (`id`, `menu_id`, `event_name`) VALUES
 (9, 5, 'EDIT_DATA'),
 (10, 5, 'REMOVE_DATA'),
 (11, 5, 'PRINT_DATA'),
-(12, 9, 'SAVE_DATA');
+(12, 9, 'SAVE_DATA'),
+(13, 10, 'REMOVE_DATA'),
+(14, 10, 'EDIT_DATA'),
+(15, 10, 'ADD_DATA'),
+(20, 11, 'SAVE_DATA'),
+(21, 11, 'ADD_DATA'),
+(22, 11, 'REMOVE_DATA');
 
 -- --------------------------------------------------------
 
@@ -168,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `role_menu_event_group` (
   `group_id` int(11) DEFAULT NULL,
   `is_active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`role_menu_event_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `role_menu_event_group`
@@ -182,7 +193,13 @@ INSERT INTO `role_menu_event_group` (`role_menu_event_id`, `role_id`, `group_id`
 (9, 9, 1, 1),
 (10, 10, 1, 1),
 (11, 11, 1, 1),
-(12, 12, 1, 1);
+(12, 12, 1, 1),
+(13, 13, 1, 1),
+(14, 14, 1, 1),
+(15, 15, 1, 1),
+(20, 20, 1, 1),
+(21, 21, 1, 1),
+(22, 22, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -196,19 +213,18 @@ CREATE TABLE IF NOT EXISTS `role_menu_group` (
   `group_id` int(11) DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`role_menu_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `role_menu_group`
 --
 
 INSERT INTO `role_menu_group` (`role_menu_id`, `menu_id`, `group_id`, `is_active`) VALUES
-(8, 8, 1, 1),
-(5, 5, 1, 1),
 (4, 4, 1, 1),
 (6, 6, 1, 1),
 (7, 7, 1, 1),
-(9, 9, 1, 1);
+(10, 10, 1, 1),
+(11, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -228,15 +244,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `group_id`, `real_name`, `last_login`, `count_login`, `date_created`, `user_password`, `is_active`) VALUES
-(1, 'admin', 1, 'Administrator System', '2010-04-09 17:06:45', 90, '2010-02-28 15:03:33', 'YWRtaW4=', 1),
-(23, 'userku', 1, 'UserName', '1899-11-30 00:00:00', 0, '2010-04-09 18:12:54', 'MTIz', 1);
+(1, 'admin', 1, 'Administrator System', '2011-04-30 19:56:09', 96, '2010-02-28 15:03:33', 'YWRtaW4=', 1);
 
 -- --------------------------------------------------------
 
