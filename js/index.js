@@ -42,6 +42,9 @@ Ext.onReady(function(){
 	var loadingDiv;
 	loadingDiv = Ext.getDom('loading');
 	loadingDiv.style.display = 'none';
+  
+
+
 
 	var start_div = Ext.getDom('start-div').innerHTML; 
 	var start = {
@@ -55,9 +58,6 @@ Ext.onReady(function(){
 		html:start_div
 	};
 	
-	// This is the main content center region that will contain each example layout panel.
-	// It will be implemented as a CardLayout since it will contain multiple panels with
-	// only one being visible at any given time.
     var main_panel = new Ext.TabPanel({
         id : 'center_content',
         resizeTabs:true, // turn on tab resizing
@@ -101,32 +101,6 @@ Ext.onReady(function(){
 		]
 	};
 	
-/**script tambahan untuk meload data combo box yang secara langsung digunakan oleh setiap modul **/
-var angkaTest = /^[0-9]+$/;
-Ext.apply(Ext.form.VTypes, {
-    //  vtype validation function
-    angka: function(val, field) {
-        return angkaTest.test(val);
-    },
-    // vtype Text property: The error text to display when the validation function returns false
-    angkaText: 'Not valid number format".',
-    // vtype Mask property: The keystroke filter mask
-    angkaMask: /[0-9_]/i
-});
-
-function checkRole(role){
-        res = true;
-	if (!role)
-            res =false;
-        /**Ext.MessageBox.show({
-           title: 'Alert',
-           msg: 'Sorry, You not allowed to access this Menu',
-           buttons: Ext.MessageBox.OK,
-           icon: Ext.MessageBox.ERROR
-	});**/
-
-	return res;
-}	
 
 /**==========================================================================================**/
 	
@@ -139,13 +113,12 @@ function checkRole(role){
     	title: 'Menu',
         region:'center',
 	//bodyStyle:'padding:3px 0',
-	iconCls:'mymenu',
-	border:false,
+	    iconCls:'mymenu',
+	     border:false,
         autoScroll: true,
-        // tree-specific configs:
         rootVisible: false,
         lines: true,
-	useArrows:false,
+	     useArrows:false,
         singleExpand: false,
         loader: new Ext.tree.TreeLoader({
             dataUrl:'tree-data.json.php',
@@ -179,8 +152,7 @@ function checkRole(role){
 		]
     });
 
-    //treePanel.getRootNode().expand();
-	// Assign the changeLayout function to be called on tree node click.
+    
     treePanel.on('click', function(n){
     	if (!userid)
     		return false; 
@@ -207,15 +179,15 @@ function checkRole(role){
 					eval(data); 
 					if (valid_script){						
 						main_panel.add(main_content); 
-                                                main_panel.setActiveTab(id_panel)
+                        main_panel.setActiveTab(id_panel)
 						Ext.example.msg('Main Menu', n.text);
 					} else {
 					Ext.MessageBox.show({
-                                            title: 'Alert',
-                                            msg: 'Sorry, No Content Avaible for '+ n.text +' menu',
-                                            buttons: Ext.MessageBox.OK,
-                                            icon: Ext.MessageBox.ERROR
-       					});
+	                    title: 'Alert',
+	                    msg: 'Sorry, No Content Avaible for '+ n.text +' menu',
+	                    buttons: Ext.MessageBox.OK,
+	                    icon: Ext.MessageBox.ERROR
+       			    });
 					}
 					
 				}
@@ -277,6 +249,7 @@ function checkRole(role){
 			}
 	
 	}
+  
 	var actions = {
     	'logout' : function(){
     					pageAdmin ="";
@@ -380,29 +353,22 @@ function checkRole(role){
     };
 
 	
-	
     var viewPort = new Ext.Viewport({
 		layout: 'border',
 		title: 'Ext Layout Browser',
 		items: [{
-			xtype: 'box',
+		    xtype: 'box',
 			region: 'north',
 			applyTo: 'header',
 			height: 30
 		},{
 		layout: 'border',
-		//layout:'accordion',
-		//layoutConfig:{
-		//	animate:true
-		//},
 	    	id: 'layout-browser',
 			title:'Navigation Panel',
-			//iconCls:'navigator',
 	        region:'west',
 	        border: true,
 	        split: true,
 	        collapsible: true,
-		//collapseMode: 'mini',
 	        floatable: false,
 	        useSplitTips: true,
 	        cmargins: '2 2 5 2',
@@ -412,24 +378,17 @@ function checkRole(role){
 	        maxSize: 250,
 			items: [treePanel, detailsPanel]
 		},
-			contentPanel
+          contentPanel
 		],
-        renderTo: Ext.getBody()
+        renderTo:Ext.getBody()
     });
 	
+    
 	function winReport(config) {
 		
 		iconCls = (config.type =='PDF')?'report-pdf':'report-xls'; 
 		unsupportedText ='<div style="padding:10px;"><img class="x-panel-inline-icon " src="images/icon/error.png" style="float:left;"/><h1>{1} Pluggin tidak ditemukan</h1> <p><a href="{0}">Silahkan Download Report Disini</a></p></div>';
 		unsupportedText = String.format(unsupportedText,config.url,config.type); 
-		/**
-		medpanel = new Ext.ux.MediaPanel({
-			mediaCfg:{
-				mediaType:config.type,
-				url:config.url,
-				unsupportedText:unsupportedText
-			}
-		}); **/
                 myitems= [
                      { xtype:'tabpanel',
                        activeTab : 0,
@@ -509,8 +468,8 @@ function checkRole(role){
 											Ext.getCmp('frmLogin').getForm().setValues({pwd:''});
 											Ext.getCmp('tree-panel').getRootNode().reload();
 											Ext.getCmp('content-panel').remove(Ext.getCmp('content-panel').layout.activeItem);
-                                                                                        if (!Ext.getCmp('content-panel').get('center_content')){
-                                                                                            Ext.getCmp('content-panel').add(main_panel);
+                                            if (!Ext.getCmp('content-panel').get('center_content')){
+                                                  Ext.getCmp('content-panel').add(main_panel);
                                   
                                                                                         }
 											Ext.getCmp('content-panel').layout.setActiveItem('center_content');
@@ -548,6 +507,7 @@ function checkRole(role){
 			]
 	}; 
 	
+  
 	var cLogin = {
 		id:'cLogin',
 		layout:'hbox',

@@ -2,8 +2,8 @@
 	session_start(); 
 	$userid = isset($_SESSION['userid'])?$_SESSION['userid']:0;
 	$username= isset($_SESSION['user_name'])?$_SESSION['user_name']:"";
-        include_once 'config_sistem.php';
-        include_once 'config_ux.php'; 
+    include_once 'config_sistem.php';
+    include_once 'config_ux.php'; 
 ?>
 <html>
 <head>
@@ -13,16 +13,15 @@
         <!-- <link rel="stylesheet" type="text/css" href="extjs/resources/css/xtheme-gray.css"> -->
     <!-- custom includes -->
         <link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="add-on/message/examples.css">
-        <link rel="stylesheet" type="text/css" href="extjs/ux/gridfilters/css/GridFilters.css">
-        <link rel="stylesheet" type="text/css" href="extjs/ux/gridfilters/css/RangeMenu.css">
+		<link rel="stylesheet" type="text/css" href="add-on/message/examples.css">    
         <?php foreach ($ux_css as $css) {?>
-	<link rel="stylesheet" type="text/css" href="extjs/ux/css/<?php echo $css;?>">
+	<link rel="stylesheet" type="text/css" href="extjs/ux/<?php echo $css;?>">
         <?php } ?>
 </head>
 <body scroll="no">
 	<div id="loading">
-	<img src="images/indicator.gif" width="32" height="32">	</div>
+		<img src="images/indicator.gif" width="32" height="32">	
+	</div>
     <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
     <script type="text/javascript">Ext.BLANK_IMAGE_URL = "extjs/resources/images/default/s.gif"</script>
     <script type="text/javascript" src="extjs/ext-all.js"></script>
@@ -34,9 +33,7 @@
     var username = '<?php echo ucfirst($username); ?>';
     </script>
 
-    <script type="text/javascript" src="js/formLogin.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="add-on/message/examples.js"></script>
+
     	  
     <div id="header"><h1><?php echo SITE_TITLE; ?></h1></div>
     <div style="display:none;">
@@ -72,6 +69,9 @@
 			<a id="logout" href="#">Logout</a>
 		</li>
 	</ul>
-    </div>
+    </div>    
+    <script type="text/javascript" src="js/formLogin.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="add-on/message/examples.js"></script>    
 </body>
 </html>
