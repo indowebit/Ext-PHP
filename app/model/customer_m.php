@@ -41,6 +41,8 @@
                       'filter' => array('type' => 'date')
                     )                
                 )); 
+                
+
         
         $this->grid->addField(
                 array(
@@ -48,22 +50,23 @@
                     'name'  => 'is_active',
                     'meta' => array(
                       'st' => array('type' => 'bool'), 
-                      'cm' => array('header' => 'Active','width' => 60, 'sortable' => true),
-                      'editor' => array('xtype' => 'checkbox'),
+                      'cm' => array('xtype' => 'checkcolumn','header' => 'Active','width' => 60, 'sortable' => true),
                       'filter' => array('type' => 'boolean')
                     )                
                 ));     
+                
+            
         $this->grid->addField(
                 array(
                     'field' => 'is_login',
                     'name'  => 'is_login',
                     'meta' => array(
                       'st' => array('type' => 'bool'), 
-                      'cm' => array('header' => 'Is Login','width' => 60, 'sortable' => true),
-                      'editor' => array('xtype' => 'checkbox'),
+                      'cm' => array('xtype' => 'checkcolumn','header' => 'Is Login','width' => 60, 'sortable' => true),
                       'filter' => array('type' => 'boolean')
                     )                
-                ));                  
+                ));     
+       
    }
    
    public function read($request){

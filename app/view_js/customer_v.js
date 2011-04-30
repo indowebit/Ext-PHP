@@ -15,8 +15,6 @@ var dynamic_editor_customer = new Ext.ux.DynamicEditorGridTbar({
     }    
 }); 
 
-dynamic_editor_customer.store.reload(); 
-
 var main_content = {
   id : id_panel,  
   title:n.text,  
