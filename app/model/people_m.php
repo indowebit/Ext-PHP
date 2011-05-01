@@ -76,6 +76,10 @@ class Person extends msDB {
         );                
         return $this->grid->doUpdate(json_encode($data));
     }
+    
+    function doReport($request){
+      return $this->grid->dosql($request); 
+    }
 
     function destroy($request){
         return $this->grid->doDestroy($request);

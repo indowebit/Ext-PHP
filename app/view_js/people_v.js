@@ -1,6 +1,10 @@
 valid_script = true;  
 ajax_url = 'ajax.handler.php?id=' + page;  
 
+function reportSelect(bt){
+  dynamic_grid_people.getTopToolbar().get(8).setText(bt.text); 
+  dynamic_grid_people.getTopToolbar().get(8).mode = bt.mode;   
+}
 
 var dynamic_grid_people = new Ext.ux.PhpDynamicGridPanel({
     border:false,
@@ -11,6 +15,34 @@ var dynamic_grid_people = new Ext.ux.PhpDynamicGridPanel({
     baseParams:{
       action:'read'
     },
+    tbar:[
+    '-',{
+      text:'Print Mode',
+      iconCls:'report-mode',
+      menu:{
+        items:[
+        {text:'PDF',mode:'pdf',handler:reportSelect},
+        {text:'XLS',mode:'xls',handler:reportSelect}
+        ]
+      }
+    },'-',{
+      text:'Print PDF',
+      iconCls:'report-mode',
+      mode:'pdf',
+      handler:function(){
+        options = dynamic_grid_people.getParamsFilter();
+        report_link = 'report.php?id=' + page;
+        options = Ext.apply(options,{mode:this.mode}); 
+        winReport({
+            id : this.id,
+            title : 'People List',
+            url : report_link,
+            type : this.mode,
+            params:options        
+        }); 
+      }
+    }
+    ],
     tbarDisable:{  //if not declaration default is true
       add:!ROLE.ADD_DATA,
       edit:!ROLE.EDIT_DATA,

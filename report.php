@@ -29,19 +29,19 @@
 		$result = array_reverse($tmp);
 		return implode(" ",$result);
 	}
-        function getYear($val){
-            $temp = explode('-', $val);
-            return $temp[0];
+    function getYear($val){
+        $temp = explode('-', $val);
+        return $temp[0];
+    }
+    function addNull($val){
+        $tmp = $val;
+        if (is_numeric($val)){
+            $num = $val + 0;
+            if ($num <10)
+                $tmp = "0". $num;
         }
-        function addNull($val){
-            $tmp = $val;
-            if (is_numeric($val)){
-                $num = $val + 0;
-                if ($num <10)
-                    $tmp = "0". $num;
-            }
-            return $tmp;
-        }
+        return $tmp;
+    }
 
         if ($userid){
 		include_once("config_sistem.php");
@@ -55,7 +55,7 @@
 			$report = $handler->getReport($id[1]); 
 			if ($report)
 				if (file_exists("app/report/$report")){
-                                        include_once 'app/config/config.db.php';
+                    include_once 'app/config/config.db.php';
 					include_once("app/report/$report");
 				}
 		}

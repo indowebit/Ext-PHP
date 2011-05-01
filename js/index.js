@@ -386,7 +386,7 @@ Ext.onReady(function(){
     
 	function winReport(config) {
 		
-		iconCls = (config.type =='PDF')?'report-pdf':'report-xls'; 
+		iconCls = (config.type =='pdf')?'report-pdf':'report-xls'; 
 		unsupportedText ='<div style="padding:10px;"><img class="x-panel-inline-icon " src="images/icon/error.png" style="float:left;"/><h1>{1} Pluggin tidak ditemukan</h1> <p><a href="{0}">Silahkan Download Report Disini</a></p></div>';
 		unsupportedText = String.format(unsupportedText,config.url,config.type); 
                 myitems= [

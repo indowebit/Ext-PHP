@@ -187,6 +187,15 @@ Ext.ux.DynamicEditorGrid = Ext.extend(Ext.grid.EditorGridPanel, {
                       }
                   };
       return this.buttonClear;
-    }     
+    },
+    
+    getParamsFilter:function(){
+      if (this.filterPlugin){
+        the_filter =   this.filterPlugin.buildQuery(this.filterPlugin.getFilterData());
+        return Ext.apply(the_filter,this.store.lastOptions.params);
+      }else{
+        return this.store.lastOptions.params;
+      }
+    }    
   
 });
