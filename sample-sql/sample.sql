@@ -114,5 +114,5 @@ CREATE TABLE IF NOT EXISTS `people` (
 --
 
 INSERT INTO `people` (`id`, `name`, `birthday`, `height`) VALUES
-(4, 'ashadi 1', '2011-04-24', 0),
-(5, 'ashadi 2', '1899-11-30', 123456);
+(4, 'nama 1', '2011-04-24', 0),
+(5, 'nama 2', '1899-11-30', 123456);
