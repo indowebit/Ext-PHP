@@ -131,7 +131,7 @@ INSERT INTO `menu` (`id`, `parent_id`, `title`, `iconcls`, `handler`, `ajax`, `r
 (4, 0, 'Sample Grid', 'app-grid', '', '', '', 1, 6),
 (6, 0, 'Sample Chart', 'stat', '', '', '', 1, 8),
 (7, 6, 'Sample Chart 1', 'stat-line2', 'chart_v.js', 'chart_c.php', '', 1, 7),
-(10, 4, 'People', 'browse', 'people_v.js', 'people_c.php', '', 1, 10),
+(10, 4, 'People', 'browse', 'people_v.js', 'people_c.php', 'people_r.php', 1, 10),
 (11, 4, 'Dynamic Editor Grid', 'browse', 'customer_v.js', 'customer_c.php', '', 1, 11);
 
 -- --------------------------------------------------------
