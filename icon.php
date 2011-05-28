@@ -1,6 +1,6 @@
 <?php
 		include_once("config_sistem.php");
-		include_once("class/mssql.inc.php"); 
+		include_once("class/class.msDB.php"); 
 		include_once("class/class.grid.php");
 
 		$grid = new grid(true); 

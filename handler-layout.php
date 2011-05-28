@@ -8,7 +8,7 @@
 	header('Content-Type: text/javascript');
 	if ($userid){
 		include_once("config_sistem.php");
-		include_once("class/mssql.inc.php"); 
+		include_once("class/class.msDB.php"); 
 		include_once("class/class.handler.php"); 
 		$handler = new handler(true); 
 		$page = isset($_POST['page'])?$_POST['page']:0; 	

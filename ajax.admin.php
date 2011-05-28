@@ -2,7 +2,7 @@
 	session_start();
 	$userid = isset($_SESSION['userid'])?$_SESSION['userid']:0;
 	include_once("config_sistem.php");
-	include_once("class/mssql.inc.php"); 
+	include_once("class/class.msDB.php"); 
 	include_once("class/class.grid.php");
 	$id = isset($_REQUEST['id'])?$_REQUEST['id']:0;
 	if ($userid){

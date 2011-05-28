@@ -3,7 +3,7 @@
 	$userid = isset($_SESSION['userid'])?$_SESSION['userid']:0;
 	if ($userid){
 		include_once("config_sistem.php");
-		include_once("class/mssql.inc.php"); 
+		include_once("class/class.msDB.php"); 
 		include_once("class/class.grid.php");
 		include_once("class/class.handler.php"); 
 		$handler = new handler(true); 

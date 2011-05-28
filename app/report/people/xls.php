@@ -1,6 +1,6 @@
 <?php
 
-  require_once ABSPATH .'includes/php-excel/PHPExcel.php';
+  require_once ABSPATH .'includes/PHPExcel/PHPExcel.php';
   
     // Create new PHPExcel object
   $objPHPExcel = new PHPExcel();
