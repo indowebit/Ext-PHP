@@ -37,12 +37,14 @@ var grid = new Ext.grid.EditorGridPanel({
  * a column.
  */
 Ext.ux.grid.CheckColumn = Ext.extend(Ext.grid.Column, {
-
+    editable:true,
     /**
      * @private
      * Process and refire events routed from the GridView's processEvent method.
      */
     processEvent : function(name, e, grid, rowIndex, colIndex){
+        if (!this.editable)
+          return false;
         if (name == 'mousedown') {
             var record = grid.store.getAt(rowIndex);
             record.set(this.dataIndex, !record.data[this.dataIndex]);
