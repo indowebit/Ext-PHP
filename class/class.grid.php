@@ -1,12 +1,10 @@
 <?php
 
 /**
-	cara pakai
-	$grid->setTable();
-	$grid->addField(array kuduan);
-	$grid->setJoin() -->optional;
-	echo $grid->doRead($_REQUEST); 
-**/
+ * Class Grid for automatic generated json Grid
+ * 2011 @indowebit.co.cc 
+ *
+ */
 class Grid extends msDB {
 
 	/**
@@ -579,7 +577,7 @@ class Grid extends msDB {
 	function getLastRecordSql($data) {
 		$row = $this->buildList($this->fields);
 		$selectlist = implode(",",$row); 	
-		$strSql = "select " . $selectlist . " from " . $this->master_table ." where ".$this->keyfield ." =? " . $this->join;
+		$strSql = "select " . $selectlist . " from " . $this->master_table ." ". $this->join ." where ".$this->keyfield ." =?";
 		return $strSql; 
 	}
 	
