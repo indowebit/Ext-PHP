@@ -25,6 +25,8 @@ $ux_js[] = "DynamicGrid/WindowGridPopUp.js";
 $ux_js[] = "DynamicGrid/ExtPhpDynamicGridPanel.js"; 
 $ux_js[] = "DynamicGrid/DynamicEditorGrid.js"; 
 $ux_js[] = "DynamicGrid/DynamicEditorGridTbar.js"; 
+$ux_js[] = "DynamicGrid/DynamicGroupingGrid.js"; 
+
 
 
 //load css file in folder extjs/ux/
