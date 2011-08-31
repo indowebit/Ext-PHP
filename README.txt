@@ -1,14 +1,14 @@
-Ext-PHP Versi 0.1
-Framework Extjs untuk membangun aplikasi dengan cepat menggunakan libray Extjs
-build and Development By http://indowebit.co.cc
+Ext-PHP Version 0.1
+Extjs framework for rapidly build web application using Extjs Library
+build and Development By http://indowebit.com
 
 
 INSTALATION
 ==============================================
-1. Make config_sistem.php writable (chmod 777)
+1. Make sure the file config_sistem.php writable for public (chmod 777)
 2. Browse with firefox to installation folder 
    Example : http://localhost/<your_folder>/install
-   Sesuaikan site title, menu title dengan aplikasi yang akan anda bangun
+   fit site title, menu title with your application that you would to build
 
 RUNNING WEBSITE eg (http://localhost/<your_folder>)
 ==================================================
@@ -16,36 +16,42 @@ USER NAME AND PASSWORD
 username = admin
 password = admin
 
-Menjalankan Sample Modul   
-- Dumping sample-sql di folder sample-sql dengan PHPMyadmin ke database test
+HOW TO MAKE SAMPLE MODULE WORKS
+- Export sample-sql file in sample-sql folder with PHPMyAdmin to test database
 - Edit file app/config/config.db.php
-    * pastikan password dan username dari mysql anda benar
-- Klik menu sekali lagi
+    * make sure the mysql user and password is right with your Mysql Server 
+- Click the menu once again.
 
-Daftar File
+Files List
 start.php
-- Halaman awal yang akan ditampilan pada waktu setelah login. bisa berisi html biasa ataupun php script
+- Main page that would be show after login. you can fill it with html or php script
 config_ux
-- file yang mengatur untuk meload ux javascript dari folder extjs/ux
+- the file is uses to manage ux javascript that loaded after main page completed from extjs/ux folder
 
-Membangun aplikasi
-semua modul akan diletakkan difolder app
-app/config/config.db.php
- - Konfigurasi dari database anda. lihat dokumentasi adodb php untuk jenis-jenis database yang didukung
+HOW TO BUILD YOUR OWN MODULE. 
+the whole modules located in folder app
+ - app/config/config.db.php
+  database configuration of yours. see adodb php doc for supported database types
 
 app/model
- - file model anda. usahakan dengan akhiran _m untuk akhir setiap file
+ - your model file. the suffix is _m for each model
 
 app/view_js
- - file UI content Extjs. usahakan dengan akhiran _v untuk setiap file
+ - the UI extjs content file.  suffix is always _v
 
 app/controller
- - controller request dari UI view. usahakan dengan akiran _c untuk setiap file
+ - the controller file. the suffix is _c
 
-Membuat Menu dan Event
-klik menu manager
- -Add Menu untuk membuat menu
- -Add Sub Menu untuk membuat folder menu
+HOW TO CREATE NEW MENU AND EVENT MENU
+Click Menu Manager 
+-- "Add Menu" for create new menu 
+-- "Add Sub Menu" for create new folder menu
+After that click User manager to activated the menu depend User Group
 
-Setelah Membuat Menu klik User Manager untuk mengatur agar menu tersebut dapat diakses oleh Group User
+More information can found at http://indowebit.com
+
+Regards, 
+
+
+Ashadi
 
